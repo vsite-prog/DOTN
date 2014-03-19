@@ -20,9 +20,12 @@ namespace Predavanje4
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Vlasnistvo vlasnik;
+            //Dohvati iz Combo-a tip odabranog vlasnika
+            Enum.TryParse<Vlasnistvo>(cb_vlasnik.SelectedValue.ToString(), out vlasnik);
             Auto a = new Auto();
             a.boja = Color.Red;
-            a.vlasnik = Vlasnistvo.Privatno;
+            a.vlasnik = vlasnik;
             a.Registracija = tb_reg.Text;
             a.Brzina = Double.Parse(tb_brzina.Text);
             int i = 1;
