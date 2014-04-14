@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="StudentiModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="StudentiModelStoreContainer">
+          <EntitySet Name="student" EntityType="StudentiModel.Store.student" store:Type="Tables" />
+          <EntitySet Name="studij" EntityType="StudentiModel.Store.studij" store:Type="Tables" />
+          <AssociationSet Name="fk_studij" Association="StudentiModel.Store.fk_studij">
+            <End Role="studij" EntitySet="studij" />
+            <End Role="student" EntitySet="student" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ime" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="oib" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="studij_id" Type="int" />
+        </EntityType>
+        <EntityType Name="studij">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="sifra" Type="nvarchar" Nullable="false" MaxLength="15" />
+          <Property Name="opis" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <Association Name="fk_studij">
+          <End Role="studij" Type="StudentiModel.Store.studij" Multiplicity="0..1" />
+          <End Role="student" Type="StudentiModel.Store.student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="studij">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="student">
+              <PropertyRef Name="studij_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StudentiModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="StudentiEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="student" EntityType="StudentiModel.student" />
+          <EntitySet Name="studij" EntityType="StudentiModel.studij" />
+          <AssociationSet Name="fk_studij" Association="StudentiModel.fk_studij">
+            <End Role="studij" EntitySet="studij" />
+            <End Role="student" EntitySet="student" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="student">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ime" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="oib" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="studij_id" Type="Int32" />
+          <NavigationProperty Name="studij" Relationship="StudentiModel.fk_studij" FromRole="student" ToRole="studij" />
+        </EntityType>
+        <EntityType Name="studij">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="sifra" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="opis" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="student" Relationship="StudentiModel.fk_studij" FromRole="studij" ToRole="student" />
+        </EntityType>
+        <Association Name="fk_studij">
+          <End Role="studij" Type="StudentiModel.studij" Multiplicity="0..1" />
+          <End Role="student" Type="StudentiModel.student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="studij">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="student">
+              <PropertyRef Name="studij_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StudentiModelStoreContainer" CdmEntityContainer="StudentiEntities">
+          <EntitySetMapping Name="student">
+            <EntityTypeMapping TypeName="StudentiModel.student">
+              <MappingFragment StoreEntitySet="student">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="oib" ColumnName="oib" />
+                <ScalarProperty Name="studij_id" ColumnName="studij_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="studij">
+            <EntityTypeMapping TypeName="StudentiModel.studij">
+              <MappingFragment StoreEntitySet="studij">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sifra" ColumnName="sifra" />
+                <ScalarProperty Name="opis" ColumnName="opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
