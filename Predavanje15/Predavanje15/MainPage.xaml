@@ -1,0 +1,16 @@
+﻿<Page
+    x:Class="Predavanje15.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Predavanje15"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock HorizontalAlignment="Left" Margin="64,118,0,0" TextWrapping="Wrap" Text="Kaži nešto:" VerticalAlignment="Top" FontSize="24" Width="128"/>
+        <TextBox HorizontalAlignment="Left" Margin="226,100,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="428" FontSize="24" Height="57" Name="tbox1"/>
+        <Button Content="Klikni" HorizontalAlignment="Left" Margin="691,97,0,0" VerticalAlignment="Top" Width="143" Height="60" FontSize="24" Click="kliknut"/>
+
+    </Grid>
+</Page>
