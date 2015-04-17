@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RibetineModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="RibetineModelStoreContainer">
+          <EntitySet Name="Riba" EntityType="RibetineModel.Store.Riba" store:Type="Tables" />
+          <EntitySet Name="Vrsta" EntityType="RibetineModel.Store.Vrsta" store:Type="Tables" />
+          <AssociationSet Name="fk_vrat" Association="RibetineModel.Store.fk_vrat">
+            <End Role="Vrsta" EntitySet="Vrsta" />
+            <End Role="Riba" EntitySet="Riba" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Riba">
+          <Key>
+            <PropertyRef Name="ribaId" />
+          </Key>
+          <Property Name="ribaId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="vrstaId" Type="int" />
+        </EntityType>
+        <EntityType Name="Vrsta">
+          <Key>
+            <PropertyRef Name="vrstaId" />
+          </Key>
+          <Property Name="vrstaId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <Association Name="fk_vrat">
+          <End Role="Vrsta" Type="RibetineModel.Store.Vrsta" Multiplicity="0..1" />
+          <End Role="Riba" Type="RibetineModel.Store.Riba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vrsta">
+              <PropertyRef Name="vrstaId" />
+            </Principal>
+            <Dependent Role="Riba">
+              <PropertyRef Name="vrstaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RibetineModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RibetineEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Riba" EntityType="RibetineModel.Riba" />
+          <EntitySet Name="Vrsta" EntityType="RibetineModel.Vrsta" />
+          <AssociationSet Name="fk_vrat" Association="RibetineModel.fk_vrat">
+            <End Role="Vrsta" EntitySet="Vrsta" />
+            <End Role="Riba" EntitySet="Riba" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Riba">
+          <Key>
+            <PropertyRef Name="ribaId" />
+          </Key>
+          <Property Name="ribaId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="vrstaId" Type="Int32" />
+          <NavigationProperty Name="Vrsta" Relationship="RibetineModel.fk_vrat" FromRole="Riba" ToRole="Vrsta" />
+        </EntityType>
+        <EntityType Name="Vrsta">
+          <Key>
+            <PropertyRef Name="vrstaId" />
+          </Key>
+          <Property Name="vrstaId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Riba" Relationship="RibetineModel.fk_vrat" FromRole="Vrsta" ToRole="Riba" />
+        </EntityType>
+        <Association Name="fk_vrat">
+          <End Role="Vrsta" Type="RibetineModel.Vrsta" Multiplicity="0..1" />
+          <End Role="Riba" Type="RibetineModel.Riba" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vrsta">
+              <PropertyRef Name="vrstaId" />
+            </Principal>
+            <Dependent Role="Riba">
+              <PropertyRef Name="vrstaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RibetineModelStoreContainer" CdmEntityContainer="RibetineEntities">
+          <EntitySetMapping Name="Riba">
+            <EntityTypeMapping TypeName="RibetineModel.Riba">
+              <MappingFragment StoreEntitySet="Riba">
+                <ScalarProperty Name="ribaId" ColumnName="ribaId" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="vrstaId" ColumnName="vrstaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vrsta">
+            <EntityTypeMapping TypeName="RibetineModel.Vrsta">
+              <MappingFragment StoreEntitySet="Vrsta">
+                <ScalarProperty Name="vrstaId" ColumnName="vrstaId" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
