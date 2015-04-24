@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KladjenjeModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="KladjenjeModelStoreContainer">
+          <EntitySet Name="Kladionica" EntityType="KladjenjeModel.Store.Kladionica" store:Type="Tables" />
+          <EntitySet Name="Par" EntityType="KladjenjeModel.Store.Par" store:Type="Tables" />
+          <AssociationSet Name="FK__Par__0000000000000019" Association="KladjenjeModel.Store.FK__Par__0000000000000019">
+            <End Role="Kladionica" EntitySet="Kladionica" />
+            <End Role="Par" EntitySet="Par" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Kladionica">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="nvarchar" Nullable="false" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Par">
+          <Key>
+            <PropertyRef Name="parId" />
+          </Key>
+          <Property Name="parId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="nvarchar" Nullable="false" MaxLength="40" />
+          <Property Name="koeficijent" Type="float" Nullable="false" />
+          <Property Name="kladId" Type="int" />
+        </EntityType>
+        <Association Name="FK__Par__0000000000000019">
+          <End Role="Kladionica" Type="KladjenjeModel.Store.Kladionica" Multiplicity="0..1" />
+          <End Role="Par" Type="KladjenjeModel.Store.Par" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kladionica">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Par">
+              <PropertyRef Name="kladId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KladjenjeModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="KladjenjeEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Kladionica" EntityType="KladjenjeModel.Kladionica" />
+          <EntitySet Name="Par" EntityType="KladjenjeModel.Par" />
+          <AssociationSet Name="FK__Par__0000000000000019" Association="KladjenjeModel.FK__Par__0000000000000019">
+            <End Role="Kladionica" EntitySet="Kladionica" />
+            <End Role="Par" EntitySet="Par" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Kladionica">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Par" Relationship="KladjenjeModel.FK__Par__0000000000000019" FromRole="Kladionica" ToRole="Par" />
+        </EntityType>
+        <EntityType Name="Par">
+          <Key>
+            <PropertyRef Name="parId" />
+          </Key>
+          <Property Name="parId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="naziv" Type="String" Nullable="false" MaxLength="40" Unicode="true" FixedLength="false" />
+          <Property Name="koeficijent" Type="Double" Nullable="false" />
+          <Property Name="kladId" Type="Int32" />
+          <NavigationProperty Name="Kladionica" Relationship="KladjenjeModel.FK__Par__0000000000000019" FromRole="Par" ToRole="Kladionica" />
+        </EntityType>
+        <Association Name="FK__Par__0000000000000019">
+          <End Role="Kladionica" Type="KladjenjeModel.Kladionica" Multiplicity="0..1" />
+          <End Role="Par" Type="KladjenjeModel.Par" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kladionica">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Par">
+              <PropertyRef Name="kladId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KladjenjeModelStoreContainer" CdmEntityContainer="KladjenjeEntities">
+          <EntitySetMapping Name="Kladionica">
+            <EntityTypeMapping TypeName="KladjenjeModel.Kladionica">
+              <MappingFragment StoreEntitySet="Kladionica">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Par">
+            <EntityTypeMapping TypeName="KladjenjeModel.Par">
+              <MappingFragment StoreEntitySet="Par">
+                <ScalarProperty Name="parId" ColumnName="parId" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="koeficijent" ColumnName="koeficijent" />
+                <ScalarProperty Name="kladId" ColumnName="kladId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
