@@ -1,0 +1,13 @@
+﻿<Window x:Class="Predavanje13.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="412.687" Width="713.06">
+    <Canvas HorizontalAlignment="Left" Height="382" VerticalAlignment="Top" Width="705">
+        <Menu Height="30" Canvas.Left="0" Canvas.Top="0" Width="705">
+            <MenuItem Header="Drugi prozor" Click="MenuItem_Click"/>
+        </Menu>
+        <DataGrid x:Name="ptice_grid" Height="322" Width="695" Canvas.Top="50">
+        </DataGrid>
+    </Canvas>
+
+</Window>
