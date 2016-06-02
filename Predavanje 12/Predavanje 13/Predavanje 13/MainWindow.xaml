@@ -1,0 +1,17 @@
+﻿<Window x:Class="Predavanje_13.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Predavanje_13"
+        mc:Ignorable="d"
+        Title="Naša plikacija" Height="350" Width="525">
+    <Canvas>
+        <Menu x:Name="menu" Height="26" Width="517">
+            <MenuItem Header="Novi brod" Click="MenuItem_Click_1"/>
+            <MenuItem Header="Izlaz" Click="MenuItem_Click"/>
+        </Menu>
+        <DataGrid x:Name="grid_brodovi" Canvas.Left="10" Canvas.Top="31" Height="278" Width="497" CanUserAddRows="False"/>
+
+    </Canvas>
+</Window>
