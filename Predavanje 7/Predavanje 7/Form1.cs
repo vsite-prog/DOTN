@@ -58,6 +58,10 @@ namespace Predavanje_7
 
                 pets.Add(pet);
 
+                //Idemo ovo sortirati, možemo imamo IComparable
+                pets.Sort();
+
+
                 lb_pets.Text = "Ljubimci:";
                 //Idemo petljom kroz listu
                 foreach(IZoo p in pets)

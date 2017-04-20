@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Predavanje_7
 {
-    interface IZoo
+    interface IZoo:IComparable<IZoo>
     {
         //Ovo je našinterface i reći će što je zajedničko svima
         // a neće ništa implementirati

@@ -34,6 +34,14 @@ namespace Predavanje_7
                 throw new ArgumentOutOfRangeException();
             }
         }
+
+        //Ovo bi bilo bolje u zajedničkoj klasi
+        public int CompareTo(IZoo drugi)
+        {
+            //Usporedi s drugim objektom koji implementira ovaj Interface i vidi koji ide prije
+            return Cijena.CompareTo(drugi.Cijena);
+        }
     }
+
 }
 
