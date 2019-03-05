@@ -16,6 +16,8 @@ local.properties
 .settings/
 .loadpath
 
+
+
 # External tool builders
 .externalToolBuilders/
 
@@ -40,6 +42,8 @@ local.properties
 *.suo
 *.user
 *.sln.docstates
+
+.vs/
 
 # Build results
 
