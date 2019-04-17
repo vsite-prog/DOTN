@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NogometneLigeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Klub">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Pozicija" Type="int" Nullable="false" />
+          <Property Name="BrojBodova" Type="int" Nullable="false" />
+          <Property Name="LigaId" Type="int" />
+        </EntityType>
+        <EntityType Name="Liga">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Drzava" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <Association Name="fk_liga">
+          <End Role="Liga" Type="Self.Liga" Multiplicity="0..1" />
+          <End Role="Klub" Type="Self.Klub" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Liga">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Klub">
+              <PropertyRef Name="LigaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NogometneLigeModelStoreContainer">
+          <EntitySet Name="Klub" EntityType="Self.Klub" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Liga" EntityType="Self.Liga" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_liga" Association="Self.fk_liga">
+            <End Role="Liga" EntitySet="Liga" />
+            <End Role="Klub" EntitySet="Klub" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NogometneLigeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Klub">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pozicija" Type="Int32" Nullable="false" />
+          <Property Name="BrojBodova" Type="Int32" Nullable="false" />
+          <Property Name="LigaId" Type="Int32" />
+          <NavigationProperty Name="Liga" Relationship="Self.fk_liga" FromRole="Klub" ToRole="Liga" />
+        </EntityType>
+        <EntityType Name="Liga">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Drzava" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Klub" Relationship="Self.fk_liga" FromRole="Liga" ToRole="Klub" />
+        </EntityType>
+        <Association Name="fk_liga">
+          <End Role="Liga" Type="Self.Liga" Multiplicity="0..1" />
+          <End Role="Klub" Type="Self.Klub" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Liga">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Klub">
+              <PropertyRef Name="LigaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Klub" EntityType="Self.Klub" />
+          <EntitySet Name="Liga" EntityType="Self.Liga" />
+          <AssociationSet Name="fk_liga" Association="Self.fk_liga">
+            <End Role="Liga" EntitySet="Liga" />
+            <End Role="Klub" EntitySet="Klub" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NogometneLigeModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Klub">
+            <EntityTypeMapping TypeName="NogometneLigeModel.Klub">
+              <MappingFragment StoreEntitySet="Klub">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Pozicija" ColumnName="Pozicija" />
+                <ScalarProperty Name="BrojBodova" ColumnName="BrojBodova" />
+                <ScalarProperty Name="LigaId" ColumnName="LigaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Liga">
+            <EntityTypeMapping TypeName="NogometneLigeModel.Liga">
+              <MappingFragment StoreEntitySet="Liga">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Drzava" ColumnName="Drzava" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
