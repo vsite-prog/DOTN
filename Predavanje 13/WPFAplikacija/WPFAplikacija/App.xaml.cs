@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Predavanje_14
+namespace WPFAplikacija
 {
     /// <summary>
     /// Interaction logic for App.xaml

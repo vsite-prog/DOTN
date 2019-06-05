@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Predavanje_14.Properties
+namespace WPFAplikacija.Properties
 {
 
 

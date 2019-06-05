@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Predavanje 14", "Predavanje 14\Predavanje 14.csproj", "{E7EE4C4F-B1F5-4C7F-ACB8-6A4971134937}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFAplikacija", "WPFAplikacija\WPFAplikacija.csproj", "{91CCD959-C99E-4500-921F-FE8FE2CC5C04}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E7EE4C4F-B1F5-4C7F-ACB8-6A4971134937}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E7EE4C4F-B1F5-4C7F-ACB8-6A4971134937}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E7EE4C4F-B1F5-4C7F-ACB8-6A4971134937}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E7EE4C4F-B1F5-4C7F-ACB8-6A4971134937}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91CCD959-C99E-4500-921F-FE8FE2CC5C04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91CCD959-C99E-4500-921F-FE8FE2CC5C04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91CCD959-C99E-4500-921F-FE8FE2CC5C04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91CCD959-C99E-4500-921F-FE8FE2CC5C04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {EE626430-928E-487D-A916-776EF8BD9FB2}
+		SolutionGuid = {80E5B36D-63F8-457B-BDCC-60C2D2223870}
 	EndGlobalSection
 EndGlobal

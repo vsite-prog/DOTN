@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E7EE4C4F-B1F5-4C7F-ACB8-6A4971134937}</ProjectGuid>
+    <ProjectGuid>{91CCD959-C99E-4500-921F-FE8FE2CC5C04}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Predavanje_14</RootNamespace>
-    <AssemblyName>Predavanje 14</AssemblyName>
+    <RootNamespace>WPFAplikacija</RootNamespace>
+    <AssemblyName>WPFAplikacija</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -55,7 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Drugi.xaml">
+    <Page Include="DrugiProzor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -67,8 +67,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Drugi.xaml.cs">
-      <DependentUpon>Drugi.xaml</DependentUpon>
+    <Compile Include="DrugiProzor.xaml.cs">
+      <DependentUpon>DrugiProzor.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
