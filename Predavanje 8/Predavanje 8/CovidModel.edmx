@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CovidModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Drzave">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naziv" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Kratica" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Slucajevi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrojZarazenih" Type="int" Nullable="false" />
+          <Property Name="BrojUmrlih" Type="int" Nullable="false" />
+          <Property Name="BrojIzlijecenih" Type="int" Nullable="false" />
+          <Property Name="DrzavaId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Slucajevi__Drzav__25869641">
+          <End Role="Drzave" Type="Self.Drzave" Multiplicity="1" />
+          <End Role="Slucajevi" Type="Self.Slucajevi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drzave">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Slucajevi">
+              <PropertyRef Name="DrzavaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CovidModelStoreContainer">
+          <EntitySet Name="Drzave" EntityType="Self.Drzave" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Slucajevi" EntityType="Self.Slucajevi" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Slucajevi__Drzav__25869641" Association="Self.FK__Slucajevi__Drzav__25869641">
+            <End Role="Drzave" EntitySet="Drzave" />
+            <End Role="Slucajevi" EntitySet="Slucajevi" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CovidModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Drzave">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Kratica" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Slucajevi" Relationship="Self.FK__Slucajevi__Drzav__25869641" FromRole="Drzave" ToRole="Slucajevi" />
+        </EntityType>
+        <EntityType Name="Slucajevi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrojZarazenih" Type="Int32" Nullable="false" />
+          <Property Name="BrojUmrlih" Type="Int32" Nullable="false" />
+          <Property Name="BrojIzlijecenih" Type="Int32" Nullable="false" />
+          <Property Name="DrzavaId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Drzave" Relationship="Self.FK__Slucajevi__Drzav__25869641" FromRole="Slucajevi" ToRole="Drzave" />
+        </EntityType>
+        <Association Name="FK__Slucajevi__Drzav__25869641">
+          <End Role="Drzave" Type="Self.Drzave" Multiplicity="1" />
+          <End Role="Slucajevi" Type="Self.Slucajevi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drzave">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Slucajevi">
+              <PropertyRef Name="DrzavaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Drzave" EntityType="Self.Drzave" />
+          <EntitySet Name="Slucajevi" EntityType="Self.Slucajevi" />
+          <AssociationSet Name="FK__Slucajevi__Drzav__25869641" Association="Self.FK__Slucajevi__Drzav__25869641">
+            <End Role="Drzave" EntitySet="Drzave" />
+            <End Role="Slucajevi" EntitySet="Slucajevi" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CovidModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Drzave">
+            <EntityTypeMapping TypeName="CovidModel.Drzave">
+              <MappingFragment StoreEntitySet="Drzave">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Kratica" ColumnName="Kratica" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Slucajevi">
+            <EntityTypeMapping TypeName="CovidModel.Slucajevi">
+              <MappingFragment StoreEntitySet="Slucajevi">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BrojZarazenih" ColumnName="BrojZarazenih" />
+                <ScalarProperty Name="BrojUmrlih" ColumnName="BrojUmrlih" />
+                <ScalarProperty Name="BrojIzlijecenih" ColumnName="BrojIzlijecenih" />
+                <ScalarProperty Name="DrzavaId" ColumnName="DrzavaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
