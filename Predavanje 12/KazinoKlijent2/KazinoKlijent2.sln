@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KazinoKlijent2", "KazinoKlijent2\KazinoKlijent2.csproj", "{F30D8037-A56A-4715-92E4-D76B6AEC48DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F30D8037-A56A-4715-92E4-D76B6AEC48DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F30D8037-A56A-4715-92E4-D76B6AEC48DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F30D8037-A56A-4715-92E4-D76B6AEC48DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F30D8037-A56A-4715-92E4-D76B6AEC48DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BF2A69A5-A05E-45DA-AD0C-0AC819638C92}
+	EndGlobalSection
+EndGlobal
