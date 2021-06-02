@@ -1,0 +1,52 @@
+﻿<Window x:Class="Predavanje_14.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Predavanje_14"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="Label">
+            <Setter Property="Background" Value="Yellow" />
+            <Setter Property="Foreground" Value="Red" />
+        </Style> 
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="Paste" CanExecute="Zalijepi_CanExecute" Executed="Zalijepi_Executed" />
+    </Window.CommandBindings>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <Menu Height="20"  VerticalAlignment="Top" Grid.ColumnSpan="2">
+            <MenuItem Header="Prvi izbornik" >
+                <MenuItem Header="Otvori drugi prozor" Click="Drugi_Click" />
+                <MenuItem Header="Zalijepi" Command="Paste" />
+            </MenuItem>
+            <MenuItem Header="Drugi izbornik" >
+            </MenuItem>
+        </Menu>
+        <Label Content="Unesi neki tekst:" HorizontalAlignment="Left" Margin="145,40,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="box1" HorizontalAlignment="Left" Grid.Column="1"  Margin="10,53,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button  HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Top" Click="Button_Click" Grid.Row="1">
+            <Ellipse Width="60" Height="20" Fill="BlueViolet" />
+        </Button>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="66,37,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top">
+            fdsfsa fdsafsafdsa <LineBreak />
+            fdsfsfs
+            FSAFDSf
+            ffADFSA
+        </TextBlock>
+        <Label Name="Zalijepi_Labela" Content="Label" HorizontalAlignment="Left" Margin="178,69,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label Content="{Binding ElementName=box1, Path=Text}" Style="{StaticResource Zeleno}" Grid.Column="1" HorizontalAlignment="Left" Margin="346,69,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Button Content="Zalijepi" Command="Paste" Grid.Column="1" HorizontalAlignment="Left" Margin="99,137,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
